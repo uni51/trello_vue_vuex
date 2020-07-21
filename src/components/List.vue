@@ -24,7 +24,7 @@ export default {
   methods: {
     removeList: function() {
       if (confirm("本当にこのリストを削除しますか？")) {
-        this.store.dispatch("removelist", { listIndex: this.listIndex });
+        this.$store.dispatch("removelist", { listIndex: this.listIndex });
       }
     }
   }
