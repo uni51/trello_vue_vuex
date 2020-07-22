@@ -3,7 +3,6 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-// localStorageに保存したリストを取得する
 const savedLists = localStorage.getItem("trello-lists");
 
 const store = new Vuex.Store({
@@ -41,6 +40,9 @@ const store = new Vuex.Store({
     addCardToList(state, payload) {
       state.lists[payload.listIndex].cards.push({ body: payload.body });
     },
+    removeCardFromList(state, payload) {
+      state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1);
+    },
   },
   actions: {
     // mutationsの呼び出しはactionsが行う
@@ -53,6 +55,9 @@ const store = new Vuex.Store({
     },
     addCardToList(context, payload) {
       context.commit("addCardToList", payload);
+    },
+    removeCardFromList(context, payload) {
+      context.commit("removeCardFromList", payload);
     },
   },
   getters: {},

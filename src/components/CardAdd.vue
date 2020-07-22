@@ -53,6 +53,7 @@ export default {
         body: this.body,
         listIndex: this.listIndex
       });
+      this.body = "";
     }
   }
 };

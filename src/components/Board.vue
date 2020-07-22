@@ -5,7 +5,13 @@
       <p class="info-line">All: 0 tasks</p>
       <div class="list-index">
         <!-- Listコンポーネントを呼び出し、Listコンポーネントに必要なデータを渡しています -->
-        <list v-for="(item, index) in lists" :key="item.id" :title="item.title" :listIndex="index" />
+        <list
+          v-for="(item, index) in lists"
+          :key="item.id"
+          :title="item.title"
+          :cards="item.cards"
+          :listIndex="index"
+        />
         <list-add />
       </div>
     </main>
