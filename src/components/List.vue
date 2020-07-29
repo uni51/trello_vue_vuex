@@ -2,6 +2,7 @@
   <div class="list">
     <div class="listheader">
       <p class="list-title">{{ title }}</p>
+      <p class="list-counter">total: {{ totalCardInlist }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
     <card
@@ -22,30 +23,35 @@ import Card from "./Card";
 export default {
   components: {
     CardAdd,
-    Card
+    Card,
   },
   // propsには、親コンポーネントから受け取るデータを定義できる
   // propsでデータを受け取る時は、型などの条件を指定できる
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     cards: {
       type: Array,
-      required: true
+      required: true,
     },
     listIndex: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
+  },
+  computed: {
+    totalCardInlist() {
+      return this.cards.length;
+    },
   },
   methods: {
-    removeList: function() {
+    removeList: function () {
       if (confirm("本当にこのリストを削除しますか？")) {
         this.$store.dispatch("removelist", { listIndex: this.listIndex });
       }
-    }
-  }
+    },
+  },
 };
 </script>
